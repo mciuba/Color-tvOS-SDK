@@ -131,6 +131,8 @@ Please note that majority of operations are done on the background threads while
 
 When showing an ad you must provide the context inside your app where you are showing the ad. It will allow us to target ads more effectively and give you the ability to control the ads shown in the dashboard.
 
+**Important**: You have to add a placement in the dashboard before you use it, as shown [here](https://www.colortv.com/dashboard/docs/#adding-an-application).
+
 ```objective-c
 [[COLORAdController sharedAdController] setCurrentPlacement:COLORAdFrameworkPlacementStageOpen];
 ```
