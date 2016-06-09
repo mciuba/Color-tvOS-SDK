@@ -120,7 +120,7 @@
 
 -(void)didUpdateFocusInContext:(UIFocusUpdateContext *)context withAnimationCoordinator:(UIFocusAnimationCoordinator *)coordinator {
     
-    if ([context.nextFocusedView isKindOfClass:[UIButton class]]) {
+    if ([context.nextFocusedView isKindOfClass:[UIButton class]] && [self.view.subviews containsObject:context.nextFocusedView]) {
         [coordinator addCoordinatedAnimations:^{
             context.nextFocusedView.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
             context.nextFocusedView.layer.shadowColor = [[UIColor blackColor] CGColor];
@@ -130,7 +130,7 @@
         } completion:nil];
     }
 
-    if ([context.previouslyFocusedView isKindOfClass:[UIButton class]]) {
+    if ([context.previouslyFocusedView isKindOfClass:[UIButton class]] && [self.view.subviews containsObject:context.previouslyFocusedView]) {
         [coordinator addCoordinatedAnimations:^{
             context.previouslyFocusedView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
             context.previouslyFocusedView.layer.shadowColor = [[UIColor clearColor] CGColor];

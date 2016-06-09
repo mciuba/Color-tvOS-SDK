@@ -82,21 +82,21 @@ class ViewController: UIViewController {
 
 //MARK: UIFocusEnvironment
     override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
-        if(context.nextFocusedView is UIButton) {
+        if let nextFocusedView = context.nextFocusedView where nextFocusedView is UIButton && stackView.subviews.contains(nextFocusedView) {
             coordinator.addCoordinatedAnimations({ () -> Void in
-                context.nextFocusedView?.transform = CGAffineTransformMakeScale(1.2, 1.2)
-                context.nextFocusedView?.layer.shadowColor = UIColor.blackColor().CGColor
-                context.nextFocusedView?.layer.shadowOpacity = 0.3
-                context.nextFocusedView?.layer.shadowRadius = 15
-                context.nextFocusedView?.layer.shadowOffset = CGSize(width: 20, height: 20)
+                nextFocusedView.transform = CGAffineTransformMakeScale(1.2, 1.2)
+                nextFocusedView.layer.shadowColor = UIColor.blackColor().CGColor
+                nextFocusedView.layer.shadowOpacity = 0.3
+                nextFocusedView.layer.shadowRadius = 15
+                nextFocusedView.layer.shadowOffset = CGSize(width: 20, height: 20)
             }, completion: nil)
         }
         
-        if(context.previouslyFocusedView is UIButton) {
+        if let previouslyFocusedView = context.previouslyFocusedView where previouslyFocusedView is UIButton && stackView.subviews.contains(previouslyFocusedView) {
             coordinator.addCoordinatedAnimations({ () -> Void in
-                context.previouslyFocusedView?.transform = CGAffineTransformIdentity
-                context.previouslyFocusedView?.layer.shadowColor = UIColor.clearColor().CGColor
-                context.previouslyFocusedView?.layer.shadowOpacity = 0
+                previouslyFocusedView.transform = CGAffineTransformIdentity
+                previouslyFocusedView.layer.shadowColor = UIColor.clearColor().CGColor
+                previouslyFocusedView.layer.shadowOpacity = 0
             }, completion: nil)
         }
     }
